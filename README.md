@@ -10,3 +10,11 @@ ERRORCode를 직접 핸들링 하려면 새 객체를 생성후 그 안에 정�
 테스트 케이스 
 1) ResponseEntity status 11로 변경 후 api제공 \
 결과 : 무한 로딩 REST의 api status 규칙을 무시하여 무한 로딩에 걸리는 것으로 추정
+
+2) Spring framework에서 제공하는 ResponseEntity를 Custom \
+결과: Spring framework에서 제공하는 HTTPEntity의 getBody의 타입이 General type을 따라가 response body의 custom의 한계를 느낌
+
+3) ResponseBody용 Model정의 및 ResponseEntity Custom \
+결과: HTTP Status와 서비스의 Status를 전부 핸들링 가능
+
+3번 케이스로 서비스에 적용 후 문제점 발견시 테스트 케이스 추가 예정

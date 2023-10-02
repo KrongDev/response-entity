@@ -1,10 +1,9 @@
 package org.example.controller;
 
-import org.springframework.http.ResponseEntity;
+import org.example.model.CustomResponse;
+import org.example.model.ResponseBody;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 @RestController
 public class MessageController {
@@ -16,21 +15,27 @@ public class MessageController {
     }
 
     @GetMapping("/ok")
-    public ResponseEntity<?> ok() {
+    public CustomResponse<ResponseBody<?>> ok() {
         //
-        return ResponseEntity.ok("hello");
+        return CustomResponse.ok(ResponseBody.ok("Hello"));
+    }
+
+    @GetMapping("/fail")
+    public CustomResponse<ResponseBody<?>> fail() {
+        //
+        return CustomResponse.internalServerError(ResponseBody.fail(401, "shit", null));
     }
 
 
-    @GetMapping("/error")
-    public ResponseEntity<?> error() {
-        //
-        return ResponseEntity.badRequest().body("hello");
-    }
+//    @GetMapping("/error")
+//    public CustomResponse<?> error() {
 
-    @GetMapping("/list")
-    public ResponseEntity<?> queryList() {
-        //
-        return ResponseEntity.status(11).body(List.of("hello", "my", "name"));
-    }
+//        return CustomResponse.badRequest().body("hello");
+//    }
+
+//    @GetMapping("/list")
+//    public ResponseEntity<?> queryList() {
+
+//        return ResponseEntity.status(11).body(List.of("hello", "my", "name"));
+//    }
 }
